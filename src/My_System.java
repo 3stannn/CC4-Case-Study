@@ -153,6 +153,23 @@ public class My_System {
             System.out.println("\n" + ANSI_YELLOW + "========================================");
             System.out.println("            Remove Product");
             System.out.println("========================================" + ANSI_RESET);
+
+            System.out.print("\nEnter Product ID: ");
+            int id = scanner.nextInt();
+            scanner.nextLine();
+
+            if (product_id.contains(id)) {
+                int index = product_id.indexOf(id);
+
+                product_id.remove(index);
+                product_name.remove(index);
+                product_quantity.remove(index);
+                product_price.remove(index);
+
+                System.out.println(ANSI_GREEN + "\nProduct Removed Successfuly..." + ANSI_RESET);
+            } else {
+                System.out.println(ANSI_RED + "\nNo such ID Found!" + ANSI_RESET);
+            }
         }
         
     }
