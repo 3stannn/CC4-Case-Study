@@ -22,21 +22,26 @@ public class My_System {
 
         System.out.print("\nEnter product ID: ");
         int id = scanner.nextInt();
-        scanner.nextLine();
-        System.out.print("Enter product Name: ");
-        String name = scanner.nextLine();
-        System.out.print("Enter product Quantity: ");
-        int quantity = scanner.nextInt();
-        scanner.nextLine();
-        System.out.print("Enter product Price: $");
-        Double price = scanner.nextDouble();
 
-        product_id.add(id);
-        product_name.add(name);
-        product_quantity.add(quantity);
-        product_price.add(price);
+        if (product_id.contains(id)) {
+            System.out.println(ANSI_RED + "\nDuplicate ID Found!" + ANSI_RESET);
+        } else {
+            scanner.nextLine();
+            System.out.print("Enter product Name: ");
+            String name = scanner.nextLine();
+            System.out.print("Enter product Quantity: ");
+            int quantity = scanner.nextInt();
+            scanner.nextLine();
+            System.out.print("Enter product Price: $");
+            Double price = scanner.nextDouble();
 
-        System.out.println(ANSI_GREEN + "\nAdded Successfuly...");
+            product_id.add(id);
+            product_name.add(name);
+            product_quantity.add(quantity);
+            product_price.add(price);
+
+            System.out.println(ANSI_GREEN + "\nAdded Successfuly...");
+        }
     }
 
     void update_stock() {
@@ -48,8 +53,47 @@ public class My_System {
             System.out.println("\n" + ANSI_YELLOW + "========================================");
             System.out.println("            Update Stock");
             System.out.println("========================================" + ANSI_RESET);
-        }
-        
+
+            System.out.print("\nEnter Product ID: ");
+            int id = scanner.nextInt();
+
+            if (product_id.contains(id)) {
+                int index = product_id.indexOf(id);
+
+                System.out.println(ANSI_GREEN + "\nProduct with ID: " + id + " Found." + ANSI_RESET);
+
+                System.out.printf("\n" + ANSI_YELLOW + "Product Name:%s %s", ANSI_RESET, product_name.get(index));
+                System.out.printf("\n" + ANSI_YELLOW + "Product Quantity:%s %d", ANSI_RESET, product_quantity.get(index));
+                System.out.printf("\n" + ANSI_YELLOW + "Product Price:%s $ %,.2f", ANSI_RESET, product_price.get(index));
+                System.out.println();
+
+                System.out.println("\n" + ANSI_GREEN + "[1]"+ ANSI_RESET+ " Product ID");
+                System.out.println(ANSI_GREEN + "[2]"+ ANSI_RESET+ " Product Name");
+                System.out.println(ANSI_GREEN + "[3]"+ ANSI_RESET+ " Product Quantity");
+                System.out.println(ANSI_GREEN + "[4]"+ ANSI_RESET+ " Product Price");
+
+                System.out.print("\nEnter your choice (1-4): ");
+                int choice = scanner.nextInt();
+
+                switch (choice) {
+                    case 1:
+                        System.out.print("\nEnter new product ID: ");
+                        int new_id = scanner.nextInt();
+
+                        if (product_id.contains(new_id)) {
+                            System.out.println(ANSI_RED + "\nDuplicate ID Found!" + ANSI_RESET);
+                        } else {
+                            product_id.set(index, new_id);
+                            System.out.println(ANSI_GREEN + "\nProduct ID Updated Successfuly...");
+                            break;
+                        }
+                    default:
+                        break;
+                }
+            } else {
+                System.out.println(ANSI_RED + "\nNo such ID Found!" + ANSI_RESET);
+            }
+        }  
     }
 
     void remove_product() {

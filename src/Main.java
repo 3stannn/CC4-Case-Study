@@ -48,7 +48,6 @@ public class Main {
                     System.out.println(ANSI_RED + "\nInvalid choice! Please Try Again..." + ANSI_RESET);
             }
         }
-
         scanner.close();
     }
 }
