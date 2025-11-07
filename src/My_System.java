@@ -40,7 +40,7 @@ public class My_System {
             product_quantity.add(quantity);
             product_price.add(price);
 
-            System.out.println(ANSI_GREEN + "\nAdded Successfuly...");
+            System.out.println(ANSI_GREEN + "\nAdded Successfuly..." + ANSI_RESET);
         }
     }
 
@@ -71,24 +71,72 @@ public class My_System {
                 System.out.println(ANSI_GREEN + "[2]"+ ANSI_RESET+ " Product Name");
                 System.out.println(ANSI_GREEN + "[3]"+ ANSI_RESET+ " Product Quantity");
                 System.out.println(ANSI_GREEN + "[4]"+ ANSI_RESET+ " Product Price");
+                System.out.println(ANSI_GREEN + "[5]"+ ANSI_RESET+ " All");
 
-                System.out.print("\nEnter your choice (1-4): ");
+
+                System.out.print("\nEnter your choice (1-5): ");
                 int choice = scanner.nextInt();
+                scanner.nextLine();
 
                 switch (choice) {
                     case 1:
                         System.out.print("\nEnter new product ID: ");
                         int new_id = scanner.nextInt();
+                        scanner.nextLine();
 
-                        if (product_id.contains(new_id)) {
+                        if (product_id.contains(new_id) && product_id.indexOf(new_id) != index) {
                             System.out.println(ANSI_RED + "\nDuplicate ID Found!" + ANSI_RESET);
                         } else {
                             product_id.set(index, new_id);
                             System.out.println(ANSI_GREEN + "\nProduct ID Updated Successfuly...");
                             break;
                         }
-                    default:
+                    case 2:
+                        System.out.print("Enter new Product Name: ");
+                        String name = scanner.nextLine();
+
+                        product_name.set(index, name);
+                        System.out.println(ANSI_GREEN + "\nProduct Name Updated Successfuly...");
                         break;
+                    case 3:
+                        System.out.print("Enter new Product Quantity: ");
+                        int quantity = scanner.nextInt();
+
+                        product_quantity.set(index, quantity);
+                        System.out.println(ANSI_GREEN + "\nProduct Quantity Updated Successfuly...");
+                        break;
+                    case 4:
+                        System.out.print("Enter new Product Quantity: ");
+                        Double price = scanner.nextDouble();
+
+                        product_price.set(index, price);
+                        System.out.println(ANSI_GREEN + "\nProduct Price Updated Successfuly...");
+                        break;
+                    case 5:
+                        System.out.print("\nEnter new product ID: ");
+                        int allnew_id = scanner.nextInt();
+                        scanner.nextLine();
+
+                        if (product_id.contains(allnew_id) && product_id.indexOf(allnew_id) != index) {
+                            System.out.println(ANSI_RED + "\nDuplicate ID Found!" + ANSI_RESET);
+                        } else {
+                            System.out.print("Enter new Product Name: ");
+                            String allname = scanner.nextLine();
+                            System.out.print("Enter new Product Quantity: ");
+                            int allquantity = scanner.nextInt();
+                            System.out.print("Enter new Product Price: ");
+                            Double allprice = scanner.nextDouble();
+
+                            product_id.set(index, allnew_id);
+                            product_name.set(index, allname);
+                            product_quantity.set(index, allquantity);
+                            product_price.set(index, allprice);
+
+                            System.out.println(ANSI_GREEN + "\nProduct Updated Successfuly..." + ANSI_RESET);
+                        }
+                        break;
+                    default:
+                        System.out.println(ANSI_RED + "\nInvalid choice! Please Try Again..." + ANSI_RESET);
                 }
             } else {
                 System.out.println(ANSI_RED + "\nNo such ID Found!" + ANSI_RESET);
