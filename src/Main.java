@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -49,7 +50,7 @@ public class Main {
                     default:
                         System.out.println(ANSI_RED + "\nInvalid choice! Please Try Again..." + ANSI_RESET);
                 }
-            } catch (java.util.InputMismatchException e) {
+            } catch (InputMismatchException e) {
                 scanner.nextLine();
                 System.out.println(ANSI_RED + "\nInavlid Input. Try Again!" + ANSI_RESET);
                 continue;

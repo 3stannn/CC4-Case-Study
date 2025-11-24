@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class My_System {
@@ -19,28 +20,37 @@ public class My_System {
         System.out.println("\n" + ANSI_YELLOW + "========================================");
         System.out.println("            Add a Product");
         System.out.println("========================================" + ANSI_RESET);
+        while (true) {
+            System.out.print("\nEnter product ID: ");
+            try{
+                int id = scanner.nextInt();
 
-        System.out.print("\nEnter product ID: ");
-        int id = scanner.nextInt();
+                if (product_id.contains(id)) {
+                    System.out.println(ANSI_RED + "\nDuplicate ID Found!" + ANSI_RESET);
+                } else {
+                    scanner.nextLine();
+                    System.out.print("Enter product Name: ");
+                    String name = scanner.nextLine();
+                    System.out.print("Enter product Quantity: ");
+                    int quantity = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Enter product Price: $");
+                    Double price = scanner.nextDouble();
+                    scanner.nextLine();
+                    
+                    product_id.add(id);
+                    product_name.add(name);
+                    product_quantity.add(quantity);
+                    product_price.add(price);
 
-        if (product_id.contains(id)) {
-            System.out.println(ANSI_RED + "\nDuplicate ID Found!" + ANSI_RESET);
-        } else {
-            scanner.nextLine();
-            System.out.print("Enter product Name: ");
-            String name = scanner.nextLine();
-            System.out.print("Enter product Quantity: ");
-            int quantity = scanner.nextInt();
-            scanner.nextLine();
-            System.out.print("Enter product Price: $");
-            Double price = scanner.nextDouble();
-
-            product_id.add(id);
-            product_name.add(name);
-            product_quantity.add(quantity);
-            product_price.add(price);
-
-            System.out.println(ANSI_GREEN + "\nAdded Successfuly..." + ANSI_RESET);
+                    System.out.println(ANSI_GREEN + "\nAdded Successfuly..." + ANSI_RESET);
+                    break;
+                }
+            } catch (InputMismatchException e) {
+                scanner.nextLine();
+                System.out.println(ANSI_RED + "\nInavlid Input. Try Again!" + ANSI_RESET);
+                continue;
+            }
         }
     }
 
