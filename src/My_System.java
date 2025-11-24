@@ -89,8 +89,8 @@ public class My_System {
                         } else {
                             product_id.set(index, new_id);
                             System.out.println(ANSI_GREEN + "\nProduct ID Updated Successfuly...");
-                            break;
                         }
+                        break;
                     case 2:
                         System.out.print("Enter new Product Name: ");
                         String name = scanner.nextLine();
@@ -171,7 +171,6 @@ public class My_System {
                 System.out.println(ANSI_RED + "\nNo such ID Found!" + ANSI_RESET);
             }
         }
-        
     }
 
     void display_inventory() {
